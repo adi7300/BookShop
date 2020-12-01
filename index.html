@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My Bookshop</title>
+</head>
+
+<body onload="onInit()">
+    <h1>Welcome to my bookshop</h1>
+    <a href="#" onclick="onAddBook()">Create a new book</a>
+    <div class="modal-read">
+        <div class="modal-read-header"></div>
+        <div class="modal-read-body"></div>
+        <div class="modal-rating-div">
+            <div class="minus">-</div>
+            <input min=0 max=10 type="number" class="book-rate">
+            <div class="plus">+</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="modal-button" onclick="closeReadModal()">Close</button>
+        </div>
+    </div>
+    </div>
+    <div class="modal-add ">
+        <form>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="closeModal()">
+                        &times;
+                    </button>
+                    <h2 class="modal-title">Add new book:</h2>
+                </div>
+                <label>Title : </label>
+                <input type="text" name="title">
+            </div>
+            <p></p>
+            <div>
+                <label>Price:</label>
+                <input type="text" name="price">
+            </div>
+            <p></p>
+            <button onclick="onSubmitAdd(event);">Add Book</button>
+        </form>
+    </div>
+    <div class="modal-update ">
+        <form>
+            <div>
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="closeModal()">
+                        &times;
+                    </button>
+                    <h3 class="modal-title">Update Price for:</h3>
+                </div>
+                <label class="book-name"> </label>
+            </div>
+            <p></p>
+            <div>
+                <label>Price:</label>
+                <input type="text" name="new-price">
+            </div>
+            <p></p>
+            <button onclick="onSubmitPrice(event);">Update price</button>
+        </form>
+    </div>
+    <table class="book-shelf"></table>
+    <div class="page-nav">
+        <div class="page-box prev" onclick="onPrevPage()">Prev.</div>
+        <div class="page-box first selected-page">1</div>
+        <div class="page-box second">2</div>
+        <div class="page-box third">3</div>
+        <div class="page-box next" onclick="onNextPage()">Next</div>
+    </div>
+    <script src="js/storage-service.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+</body>
+
+</html>
