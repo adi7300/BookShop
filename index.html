@@ -4,46 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/style.css">
     <title>My Bookshop</title>
 </head>
 
 <body onload="onInit()">
-    <h1>Welcome to my bookshop</h1>
-    <a href="#" onclick="onAddBook()">Create a new book</a>
-    <div class="modal-read">
-        <div class="modal-read-header"></div>
-        <div class="modal-read-body"></div>
-        <div class="modal-rating-div">
-            <div class="minus">-</div>
-            <input min=0 max=10 type="number" class="book-rate">
-            <div class="plus">+</div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="modal-button" onclick="closeReadModal()">Close</button>
-        </div>
+    <div>
+        <section class="title-section">
+            <h1 data-trans="title">Welcome to my bookshop</h1>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"
+                    onchange="onSetLang(this.value)" value="en" checked>
+                <label class="custom-control-label" for="customRadioInline1" data-trans="english">English</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" onchange="onSetLang(this.value)"
+                    class="custom-control-input" value="he">
+                <label class="custom-control-label" for="customRadioInline2" data-trans="hebrew">Hebrew</label>
+            </div>
+        </section>
+        <section class="subtitle-section">
+            <div class="add-book-div">
+                <label for="book-name" data-trans="new-book">Book Name:</label>
+                <input class="subtitle-book txt-new-book-name" type="text" id="book-name">
+                <label for="book-author" data-trans="new-author">Author Name:</label>
+                <input class="subtitle-book txt-new-book-author" type="text" id="book-author">
+                <label for="book-price" data-trans="new-price">Price:</label>
+                <input class="subtitle-book txt-new-book-price" type="text" id="book-price">
+                <button onclick="onAddBook()" class="btn-add-book" data-trans="txt-new-book">Add new book</button>
+            </div>
+        </section>
     </div>
-    </div>
-    <div class="modal-add ">
-        <form>
-            <div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="closeModal()">
-                        &times;
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                    <h2 class="modal-title">Add new book:</h2>
                 </div>
-                <label>Title : </label>
-                <input type="text" name="title">
+                <div class="modal-body">
+                    <div class="book-details">
+                        <div class="modal-details-img"></div>
+                        <div class="modal-details">
+                            <div class="modal-details-author"></div>
+                            <div class="modal-details-price"></div>
+                            <div class="modal-details-rate"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <p></p>
-            <div>
-                <label>Price:</label>
-                <input type="text" name="price">
-            </div>
-            <p></p>
-            <button onclick="onSubmitAdd(event);">Add Book</button>
-        </form>
+        </div>
+    </div>
     </div>
     <div class="modal-update ">
         <form>
@@ -52,29 +82,36 @@
                     <button type="button" class="close" onclick="closeModal()">
                         &times;
                     </button>
-                    <h3 class="modal-title">Update Price for:</h3>
+                    <h3 class="modal-title" data-trans="modal-update-header">Update Price for:</h3>
                 </div>
                 <label class="book-name"> </label>
             </div>
             <p></p>
             <div>
-                <label>Price:</label>
+                <label data-trans="modal-update-title">Price:</label>
                 <input type="text" name="new-price">
             </div>
             <p></p>
-            <button onclick="onSubmitPrice(event);">Update price</button>
+            <button data-trans="modal-update-btn" onclick="onSubmitPrice(event);">Update price</button>
         </form>
     </div>
-    <table class="book-shelf"></table>
+
+    <div class="tbl-div table-responsive-md">
+        <table class="book-shelf table"></table>
+    </div>
     <div class="page-nav">
-        <div class="page-box prev" onclick="onPrevPage()">Prev.</div>
-        <div class="page-box first selected-page">1</div>
-        <div class="page-box second">2</div>
-        <div class="page-box third">3</div>
-        <div class="page-box next" onclick="onNextPage()">Next</div>
+        <div class="page-box prev" data-trans="btn-prev" onclick="onPrevPage()">Prev.</div>
+        <div class="page-box first page1 selected-page">1</div>
+        <div class="page-box second page2 ">2</div>
+        <div class="page-box third page3">3</div>
+        <div class="page-box next " data-trans="btn-next" onclick="onNextPage()">Next</div>
     </div>
     <script src="js/storage-service.js"></script>
+    <script src="js/i18n-service.js"></script>
     <script src="js/utils.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
     <script src="js/book-service.js"></script>
     <script src="js/book-controller.js"></script>
 </body>

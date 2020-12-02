@@ -1,28 +1,129 @@
 *{
     box-sizing: border-box;
 }
+@font-face
+{
+    font-family: 'DavidLibre-Regular';
+    src: url('../font/DavidLibre-Regular.ttf') format('truetype');	           	
+}  
+@font-face
+{
+    font-family: 'DavidLibre-Medium';
+    src: url('../font/DavidLibre-Medium.ttf') format('truetype');	           	
+}
+@font-face
+{
+    font-family: 'DavidLibre-Bold';
+    src: url('../font/DavidLibre-Bold.ttf') format('truetype');	           	
+}
 
 body{
-    background-color: rgb(136, 174, 203);
+    background: url('../img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
+}
+section{
+    text-align: center;
+    padding: 10px;
+    
+}
+.rtl{
+    direction: rtl;
+}
+
+.btn-add-book{
+    font-size: 18px;
+    padding: 2px;
+    margin: 0 ;
+    /* width: 100vw;   */
+    background: rgba(31, 31, 31, 0.433); 
+    color: rgba(255, 235, 205, 0.509);
+}
+
+.title-section{
+    background-color: black;
+    display: absolute !important;
+    top: 0;
+}
+
+
+.stared {
+    color: orange;
+}
+
+.div-rating{
+    margin-top: 24px;
+}
+
+.book-details{
+    display: flex;
+    
+}
+.modal-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.subtitle-section{
+    /* display: flex ;
+    justify-content: space-between !important; */
+    background-color: rgb(70, 70, 70);
+    color:blanchedalmond;
+    font-family: david;
+}
+.add-book-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 table{
-    border-collapse: collapse;
-    margin: auto;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'DavidLibre-Medium';
 }
+img{
+    width:120px;
+    height:150px;
+}
+.custom-control-label{
+    color: rgba(255, 235, 205, 0.604);
+}
+.tbl-div{
+    margin: 0 auto;
+    width: 80vw;
+ }
+
+h1{
+    margin:10px ;
+    padding: 10px;
+    color:blanchedalmond;
+    font-family: 'DavidLibre-Bold';
+}
+
 h2,h3{
     font-family: sans-serif;
 }
-
-th,td {
-    padding: 5px;
-    border: 1px solid grey;
+th{
+    background-color: rgba(143, 143, 143, 0.835);
+    color: brown;
+    font-size: 25px; 
+}
+.actions{
     text-align: center;
+}
+
+td {
+    background-color: rgba(139, 140, 139, 0.735);
+    padding: 5px;
+    font-family: 'DavidLibre-Medium';
+    font-size: 20px;
 }
 
 form{
@@ -30,8 +131,9 @@ form{
 }
 
 label{
-    font-family: sans-serif;
-    font-weight: bold;    
+    font-family: 'DavidLibre-Medium';
+    font-size: 20px;
+    margin: 0;
 }
 
 input{
@@ -40,13 +142,17 @@ input{
 }
 
 button{
-    width: 80px;
+    width: 150px;
     color: black;
     border: 0px;
     padding:7px;
     border-radius: 4px;
+    margin-top: 15px;
 }
-
+.subtitle-book{
+    border: 0;
+    border-radius: 3px;
+}
 .modal-read {
     display:none;
     flex-direction: column;
@@ -76,8 +182,8 @@ button{
 }
 
 .modal-rating-div{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
+    font-family: 'DavidLibre-Medium';
+    font-size: 20px;
     display: flex;
     justify-content: center;
     border-left:0.1px solid rgba(216, 215, 215,0.4);
@@ -90,14 +196,26 @@ button{
 .book-rate{
     width: 70px;
 }
-
+.minus-plus-box{
+    background-color:grey;
+    width: 50px;
+    height: 40px;
+    margin: 0;
+}
+.rating-box{
+    display: flex;
+}
+.rate-box{
+    text-align: center;
+    margin: 0;
+    padding: 0.9em;
+}
 .minus , .plus{
     color: blanchedalmond;
-    padding-left: 10px;
-    padding-right: 10px;
     background-color: grey;
     cursor: pointer;
 }
+
 
 .modal-button
 {
@@ -144,17 +262,14 @@ button{
 }
 
 
-.btn-read{
-    background-image: linear-gradient(rgb(101, 149, 252), blue);
+.tbl-btn , .btn-primary, btn
+{
+    width: 100px;
+    background-color: rgba(250, 128, 114, 0.303);
+    border: 1px solid rgba(205, 119, 100, 0.195);
+    color: rgb(58, 58, 58);
 }
 
-.btn-update{
-    background-image: linear-gradient(rgb(249, 188, 135), orange);
-}
-
-.btn-delete{
-    background-image: linear-gradient(rgb(252, 101, 101), red);
-}
 
 .id{
     width: 50px;
@@ -205,4 +320,6 @@ button{
     background-color: rgba(238, 234, 234, 0.796);
     color: rgba(131, 130, 130,0.7);
 }
-
+.eol{
+    color: gainsboro;
+}
